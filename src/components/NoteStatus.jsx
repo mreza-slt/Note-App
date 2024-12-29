@@ -1,3 +1,5 @@
+import Message from "./Message";
+
 function NoteStatus({ notes }) {
   // derived state
   const allNotes = notes.length;
@@ -5,7 +7,13 @@ function NoteStatus({ notes }) {
   //   const unCompletedNotes = notes.filter((n) => !n.completed).length;
   const unCompletedNotes = allNotes - completedNotes;
 
-  if (!allNotes) return <h2>No notes has already been added</h2>;
+  if (!allNotes)
+    return (
+      <Message>
+        <span>info</span>
+        <span>no notes already been added</span>
+      </Message>
+    );
   return (
     <ul className="note-status">
       <li>
